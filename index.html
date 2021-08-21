@@ -5,9 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mac book pro</title>
+    <title>Mac Book Pro</title>
     <!-- tailwind css -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- style css  -->
+    <style>
+        .btn {
+            transition-duration: 0.1s;
+        }
+
+        .btn:hover {
+            background-color: black;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,6 +26,7 @@
         <div class="flex my-10">
             <div class="w-full"><img src="images/mac.png" alt=""></div>
             <div class="mx-7 ">
+                <!-- configuration -->
                 <div>
                     <h1 class="text-5xl font-semibold">Customize your Blue 24-inch iMac with Apple M1 chip</h1>
                     <p class="my-4">Apple M1 chip with 4 perfrmance cores and 4 efficiency cores, 7-core GPU, and
@@ -23,31 +35,36 @@
                         8GB unified memory 256GB SSD storage Two Thurderbolt/USB 4 ports Magic Mouse Magic Keyboard US
                         English</p>
                 </div>
+                <!-- memory -->
                 <div class="my-10">
-                    <h3 class="text-xl font-semibold">Memory</h1>
-                        <div class="flex ">
-                            <button class="mr-2 border-2 px-4 py-1 rounded-md">8GB unified memory</button>
-                            <button class="border-2 px-4 py-1 rounded-md">16GB unified memory</button>
-                        </div>
+                    <h3 class="text-xl font-semibold">Memory</h3>
+                    <div class="flex ">
+                        <button id="button-poor" class="btn mr-2 border-2 px-4 py-1 rounded-md">8GB unified
+                            memory</button>
+                        <button id="button-rich" class="btn border-2 px-4 py-1 rounded-md">16GB unified memory</button>
+                    </div>
                 </div>
+                <!-- storage -->
                 <div class="my-10">
-                    <h3 class="text-xl font-semibold">Storage</h1>
-                        <button class="mr-2 border-2 px-4 py-1 rounded-md">256GB SSD storage</button>
-                        <button class="mr-2 border-2 px-4 py-1 rounded-md">512GB SSD storage</button>
-                        <button class="border-2 px-4 py-1 rounded-md">1TB SSD storage</button>
+                    <h3 class="text-xl font-semibold">Storage</h3>
+                    <button id="ssd-256gb" class="btn mr-2 border-2 px-4 py-1 rounded-md">256GB SSD storage</button>
+                    <button id="ssd-512gb" class="btn mr-2 border-2 px-4 py-1 rounded-md">512GB SSD storage</button>
+                    <button id="ssd-1tb" class="btn border-2 px-4 py-1 rounded-md">1TB SSD storage</button>
                 </div>
+                <!-- delivery charge -->
                 <div class="my-10">
-                    <h3 class="text-xl font-semibold">Choose your delivery option</h1>
-                        <button class="mr-2 border-2 px-4 py-1 rounded-md hover:bg-black-700">Friday, Aug 25 FREE Prime
-                            Delivery</button>
-                        <button class="border-2 px-4 py-1 rounded-md active:bg-green-700">Friday, Aug 21
-                            Delivery charge
-                            $20</button>
+                    <h3 class="text-xl font-semibold">Choose your delivery option</h3>
+                    <button id="free-delivery" class="btn mr-2 border-2 px-4 py-1 rounded-md ">Friday, Aug 25 FREE Prime
+                        Delivery</button>
+                    <button id="costly-delivery" class="btn border-2 px-4 py-1 rounded-md ">Friday, Aug 21
+                        Delivery charge
+                        $20</button>
                 </div>
+                <!-- cost Calculation -->
                 <table class="mx-2 my-10 font-semibold " style="width:50%">
                     <tr>
                         <td>Best Price</td>
-                        <td>$1299</td>
+                        <td>$<span id="best-price">1299</span></td>
                     </tr>
                     <tr>
                         <td colspan="4">
@@ -56,7 +73,7 @@
                     </tr>
                     <tr>
                         <td>Extra Memory Cost</td>
-                        <td>$0</td>
+                        <td>$<span id="extra-memory">0</span></td>
                     </tr>
                     <tr>
                         <td colspan="4">
@@ -65,7 +82,7 @@
                     </tr>
                     <tr>
                         <td>Extra Storage Cost</td>
-                        <td>$0</td>
+                        <td>$<span id="storage-cost">0</span></td>
                     </tr>
                     <tr>
                         <td colspan="4">
@@ -74,7 +91,7 @@
                     </tr>
                     <tr>
                         <td>Delivery Charge</td>
-                        <td>$0</td>
+                        <td>$<span id="delivery-charge">0</span></td>
                     </tr>
                     <tr>
                         <td colspan="4">
@@ -82,23 +99,27 @@
                             border-radius: 2px;">
                         </td>
                     </tr>
+                    <!-- Total Calculation -->
                     <tr>
                         <td>Total Price</td>
-                        <td>$1299</td>
+                        <td>$<span id="total-price">1299</span></td>
                     </tr>
                 </table>
                 <div>
                     <h3 class="font-medium">Add Pomo code</h3>
-                    <input class="px-4 py-2" type="text">
-                    <button class="bg-red-600 px-3 py-2 text-white border-2  hover:border-red-300 ">Apply</button>
+                    <input id="promo-field" class="px-4 py-2 border-2" type="text">
+                    <button id="promo-btn"
+                        class="bg-red-600 px-4 py-2 text-white border-2  hover:border-red-300">Apply</button>
                 </div>
             </div>
         </div>
         <div class="text-center">
             <hr>
-            <h1 class="text-5xl font-semibold">Total: $1299</h1>
+            <h1 class="text-5xl font-semibold">Total: $<span id="payable-price">1299</span></h1>
         </div>
     </section>
+
+    <!-- java script  -->
     <script src="js/code.js"></script>
 </body>
 
